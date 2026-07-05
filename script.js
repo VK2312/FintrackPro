@@ -16,6 +16,9 @@ const userArr = [];
 let allTransaction = [];
 const userTranx = [];
 
+// const xValues = ["Income", "Expense"];
+// // const yValues = [];
+
 //function for registering the user
 function registerUser(e){
     let userArr = JSON.parse(localStorage.getItem("userArr")) || []; 
@@ -145,7 +148,7 @@ addTranxForm.addEventListener('submit', (e) => {
     renderBalance();
     addTranxForm.style.display = "none";
     renderTranxTable();
-    
+    renderGraph();
 })
 
 
@@ -183,7 +186,6 @@ function currentBalance(){
         balance,
         totalTranx
     }
-
     return {totalIncome, totalExpense, balance, totalTranx};
 }
 
@@ -208,6 +210,7 @@ window.addEventListener("load", () => {
 
         renderBalance();
         renderTranxTable();
+        renderGraph();
     } else {
         dashboard.style.display = "none";
         loginForm.style.display = "flex";
@@ -224,6 +227,7 @@ resetBtn.addEventListener("click", (e) => {
     localStorage.setItem("allTransaction", JSON.stringify(remainingTranx));
     renderBalance();
     renderTranxTable();
+    renderGraph();
     alert(`${currentUser.username} all transaction were taken by Cheel`);
 
 });
@@ -282,6 +286,7 @@ function deleteTranx(id) {
     localStorage.setItem("allTransaction", JSON.stringify(updated));
     renderBalance();
     renderTranxTable();
+    renderGraph();
 }
 
 function editTranx(id) {
@@ -310,7 +315,42 @@ function editTranx(id) {
             addTranxForm.style.display = "none";
             renderBalance();
             renderTranxTable();
+            renderGraph();
         };
     }
 }
 
+
+let myChart;
+function renderGraph() {
+    const { totalIncome, totalExpense } = currentBalance();
+    
+    if (myChart) {
+        myChart.destroy();
+    }
+
+    myChart = new Chart(document.getElementById("myChart"), {
+        type: "bar",
+        data: {
+            labels: ["Income", "Expense"],
+            datasets: [{
+                backgroundColor: ["green", "red"],
+                data: [totalIncome, totalExpense]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: "Income vs Expense"
+                }
+            }
+        }
+    });
+}
+
+renderGraph();
