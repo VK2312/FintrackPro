@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+    <title>Fintrack Pro</title>
+</head>
+<body>
+    <div class="main">
+        <form id="login-form">
+                <h2>Welcome Back</h2>
+                <p>Login to FinTrack Pro</p>
+                <label for="username" class="username">
+                    <p>Username</p>
+                    <input type="text" id="username">
+                </label>
+
+                <label for="password" class="password">
+                    <p>Password</p>
+                    <input type="password" name="" id="password">
+                </label>
+                
+                <button id="loginBtn">Login</button>
+                <p id="para">Don't have account? <a href="">Register Here</a></p>
+                
+        </form>
+
+        <form id="register-form">
+                <h2>Create Account</h2>
+                <p>Join FinTrack Pro</p>
+                <label for="username" class="username">
+                    <p>Choose a Username</p>
+                    <input type="text" id="username">
+                </label>
+
+                <label for="password" class="password">
+                    <p>Password</p>
+                    <input type="password" name="" id="password">
+                </label>
+                
+                <button id="btn">Register</button>
+                <p id="para">Already have account? <a href="">Login Here</a></p>
+                
+        </form>
+
+
+        <div id="dashboard">
+                <div id="leftSide">
+                    <div id="topDiv">
+                        <div id="firstDiv">
+                           <i class="ri-stack-fill"></i>
+                        <div>
+                        <h3>FinTrack Pro</h3>
+                        <p>Enterprise Finance</p>
+                        </div>
+                        </div>
+
+                        <div class="secondDiv">
+                        <i class="ri-dashboard-horizontal-fill"></i>
+                        <h3>Dashboard</h3>
+                        </div>
+
+                        <div class="secondDiv">
+                        <i class="ri-settings-3-fill"></i>
+                        <h3>Settings</h3>
+                        </div>
+                    </div>
+
+                    <button id="addTranxBtn">+ Add Transaction</button>
+                </div>
+
+                <div id="rightSide">
+                    <div class="nav">
+                        <p id="dashboardUser">User</p>
+                        <button id="logoutBtn"> <i class="ri-logout-box-r-fill"></i> Logout</button>
+                    </div>
+                    
+                    <div class="hero">
+                        <h1>Financial Overview</h1>
+                        <p>Real-time tracking Application</p>
+                        <div class="cards">
+                            <div class="card">
+                                <i class="ri-bank-fill"></i>
+                                <p>Current Balance</p>
+                                <h2 id="balance">$0.00</h2>
+                            </div>
+
+                            <div class="card">
+                                <i class="ri-line-chart-line"></i>
+                                <p>Total Income</p>
+                                <h2 id="income" style="color: green;">$0.00</h2>
+                            </div>
+
+                            <div class="card">
+                                <i class="ri-corner-right-down-fill"></i>
+                                <p>Total Expense</p>
+                                <h2 id="expense" style="color: crimson;">$0.00</h2>
+                            </div>
+
+                            <div class="card">
+                                <i class="ri-article-line"></i>
+                                <p>Total Transaction</p>
+                                <h2 id="transaction">$0.00</h2>
+                            </div>
+                        </div>
+
+                        <div class="graphSection">
+                            <div class="graph">
+                                <h2>Cash Flow Analysis</h2>
+                                <div class="realGraph">
+
+                                </div>
+                            </div>
+
+                            <div class="preference">
+                                <h2>Preferences</h2>
+                                <div class="mode">
+                                    <h3>Dark Mode</h3>
+                                </div>
+                                <br>
+                                <hr style="width: 90%; margin-left: 20px;">
+                                <br>
+                                <button id="resetBtn" style="color: brown; background-color:  #fff5f5;; border:1px solid #ffcccc;; margin-left: 20px; width: 90%; font-weight: 700;">
+                                    <i class="ri-delete-bin-5-fill"></i> Reset All Data
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="transaction">
+                            <h2>All Transactions</h2>
+                            <div class="searchContainer">
+                                <div class="searchBox">
+                                    <i class="ri-search-line"><input type="text" placeholder="Search transactions"></i>
+                                    
+                                </div>
+                                <div class="optionDiv">
+                                    <select name="cars" id="cars">
+                                    <option value="allTransaction">All Types</option>
+                                    <option value="income">Income Only</option>
+                                    <option value="expense">Expense Only</option>
+                                </select>
+                                </div> 
+                            </div>
+
+                            <!-- Intel refers to Information -->
+                            <div class="intel">
+                                <table class="intelTable">
+                                    <thead>
+                                        <tr id="tableRow">
+                                        <th class="tabElem">DATE</th>
+                                        <th class="tabElem">DESCRIPTION </th>
+                                        <th class="tabElem">CATEGORY </th>
+                                        <th class="tabElem">AMOUNT </th>
+                                        <th class="tabElem">ACTIONS </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="tranxTableBody">
+                                        
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <form style="height: 500px;" id="addTranxForm">
+            <h2>Add Transaction</h2>
+            <select name="" id="" style="width: 85%; height: 35px; border-radius: 5px; border-color: gainsboro;">
+                <option value="income">income</option>
+                <option value="expense">expense</option>
+            </select>
+            <label for="des" style="margin-left: 15px; width: 90%;">Description
+                <input type="text" id="des" style="width: auto;">
+            </label>
+            <label for="amount" style="margin-left: 15px; width: 90%;">Amount 
+                <input type="number" name="amount" id="amount">
+            </label>
+            <label for="amount" style="margin-left: 15px; width: 90%;">Date 
+                <input type="date" name="amount" id="amount">
+            </label>
+            <select name="" id="" style="width: 85%; height: 35px; border-radius: 5px; border-color: gainsboro;">
+                <option value="shopping">Shopping</option>
+                <option value="travel">Travelling</option>
+                <option value="gift">Gifting</option>
+                <option value="homeloan">Home Loan</option>
+                <option value="carloan">Car Loan</option>
+                <option value="salary">Salary</option>
+                <option value="FD">FD</option>
+
+            </select>
+            <button>Submit</button>
+
+        </form>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
